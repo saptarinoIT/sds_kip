@@ -38,7 +38,7 @@
                 <select name="tahun" id="tahun" class="form-select form-select-solid s2x mx-2" required>
                     <option value="">Pilih Tahun ...</option>
                     @php
-                        for ($i = date('Y'); $i >= date('Y') - 2; $i -= 1) {
+                        for ($i = date('Y'); $i >= date('Y') - 1; $i -= 1) {
                             echo "<option value='$i'> $i </option>";
                         }
                     @endphp

@@ -33,11 +33,11 @@
             <div class="table-responsive">
                 <div class="py-5">
                     <table class="table table-row-dashed table-row-gray-300 gy-7">
-                        <tr>
+                        {{-- <tr>
                             <th class="fw-bolder fs-6 text-gray-800">Petugas Surveyor</th>
                             <th>:</th>
                             <td>{{ ucwords($pendaftar->user->name) }}</td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th class="fw-bolder fs-6 text-gray-800">Kode Alternatif</th>
                             <th>:</th>
@@ -58,7 +58,7 @@
                             <th>:</th>
                             <td>{{ ucwords($pendaftar->jurusan) }}</td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <th class="fw-bolder fs-6 text-gray-800">Asal Sekolah</th>
                             <th>:</th>
                             <td>{{ ucwords($pendaftar->asal_sekolah) }}</td>
@@ -152,7 +152,7 @@
                             <th class="fw-bolder fs-6 text-gray-800">Sewa Rumah/bln </th>
                             <th>:</th>
                             <td>Rp {{ number_format($pendaftar->sewa_rumah, 0) }}</td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th class="fw-bolder fs-6 text-gray-800">Tahun</th>
                             <th>:</th>

@@ -44,9 +44,9 @@
                 auth()->user()->role == 'superadmin' or
                 auth()->user()->role == 'surveyor')
                 <div class="d-flex justify-content-between">
-                    <a href="{{ route('pendaftar.create') }}" data-state="0" id="add"
+                    {{-- <a href="{{ route('pendaftar.create') }}" data-state="0" id="add"
                         class="btn btn-md btn-outline btn-outline-success btn-active-light-success me-2 hidex"><small>Tambah
-                            Data</small></a>
+                            Data</small></a> --}}
                 @else
                     <div class="d-flex justify-content-end">
             @endif
