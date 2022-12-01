@@ -20,16 +20,16 @@ class PendaftarController extends Controller
     public function filter(Request $request, Alternatif $alternatif)
     {
         $kriteria = Kriteria::all();
-        if ($request->jenjang) {
+        if ($request->jurusan) {
 
             if ($request->tahun) {
-                $alternatif = $alternatif->where('jenjang', $request->input('jenjang'))
+                $alternatif = $alternatif->where('jurusan', $request->input('jurusan'))
                     ->where('tahun', $request->input('tahun'))
                     ->get();
                 return view('pendaftar.index', compact('alternatif', 'kriteria'));
             }
 
-            $alternatif = $alternatif->where('jenjang', $request->input('jenjang'))->get();
+            $alternatif = $alternatif->where('jurusan', $request->input('jurusan'))->get();
             return view('pendaftar.index', compact('alternatif', 'kriteria'));
         } elseif ($request->tahun) {
             $alternatif = $alternatif->where('tahun', $request->input('tahun'))
@@ -70,25 +70,25 @@ class PendaftarController extends Controller
         $c5 = $request->pangan + $request->sandang + $request->pdam + $request->listrik + $request->internet + $request->pulsa + $request->transportasi + $request->cicilan + $request->sewa_rumah;
         $tahun = date('Y');
 
-        $alternatif = Alternatif::where('jenjang', $request->jenjang)->where('tahun', $tahun)->orderBy('id', 'desc')->first();
+        $alternatif = Alternatif::where('jurusan', $request->jurusan)->where('tahun', $tahun)->orderBy('id', 'desc')->first();
         if ($alternatif  != null) {
             $result = substr("$alternatif->kode_alternatif", -3) + 1;
             if ($result >= 100) {
-                $nama = (strtoupper($request->jenjang) . $result);
+                $nama = (strtoupper($request->jurusan) . $result);
             } else if ($result >= 10) {
-                $nama = (strtoupper($request->jenjang) . '0' . $result);
+                $nama = (strtoupper($request->jurusan) . '0' . $result);
             } else if ($result < 10) {
-                $nama = (strtoupper($request->jenjang) . '00' . $result);
+                $nama = (strtoupper($request->jurusan) . '00' . $result);
             } else {
-                $nama = (strtoupper($request->jenjang) . "001");
+                $nama = (strtoupper($request->jurusan) . "001");
             }
         } else {
-            $nama = (strtoupper($request->jenjang) . "001");
+            $nama = (strtoupper($request->jurusan) . "001");
         }
         $newAlternatif = new Alternatif();
         $newAlternatif->user_id = $request->user_id;
         $newAlternatif->kode_alternatif = $nama;
-        $newAlternatif->jenjang = $request->jenjang;
+        $newAlternatif->jurusan = $request->jurusan;
         $newAlternatif->nama = $request->nama;
         $newAlternatif->alamat = $request->alamat . ', rt.' . $request->rt . ', ' . $request->kelurahan;
         $newAlternatif->asal_sekolah = $request->asal_sekolah;

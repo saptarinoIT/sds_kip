@@ -30,16 +30,16 @@ class PendaftaranSiswaController extends Controller
 
     public function filter(Request $request, Alternatif $alternatif)
     {
-        if ($request->jenjang) {
+        if ($request->jurusan) {
 
             if ($request->tahun) {
-                $pend = $alternatif->where('jenjang', $request->input('jenjang'))
+                $pend = $alternatif->where('jurusan', $request->input('jurusan'))
                     ->where('tahun', $request->input('tahun'))
                     ->get();
                 return view('pendaftaran.index', compact('pend'));
             }
 
-            $pend = $alternatif->where('jenjang', $request->input('jenjang'))->get();
+            $pend = $alternatif->where('jurusan', $request->input('jurusan'))->get();
             return view('pendaftaran.index', compact('pend'));
         } elseif ($request->tahun) {
             $pend = $alternatif->where('tahun', $request->input('tahun'))
@@ -55,7 +55,7 @@ class PendaftaranSiswaController extends Controller
     // {
     //     $request->validate([
     //         "pendaftar" => "required",
-    //         "jenjang" => "required|in:sd,smp,sma",
+    //         "jurusan" => "required|in:sd,smp,sma",
     //         "kondisi_ortu" => "required|in:1,2,3",
     //         "penghasilan_ortu" => "required|numeric",
     //         "kepemilikan_rmh" => "required|in:1,2",
@@ -67,7 +67,7 @@ class PendaftaranSiswaController extends Controller
 
     //     $pendaftaran = new SiswaModel();
     //     $pendaftaran->pendaftar = strtolower(htmlspecialchars($request->pendaftar));
-    //     $pendaftaran->jenjang = strtolower(htmlspecialchars($request->jenjang));
+    //     $pendaftaran->jurusan = strtolower(htmlspecialchars($request->jurusan));
     //     $pendaftaran->kondisi_ortu = (int)(htmlspecialchars($request->kondisi_ortu));
     //     $pendaftaran->penghasilan_ortu = (int)(htmlspecialchars($request->penghasilan_ortu));
     //     $pendaftaran->kepemilikan_rmh = (int)(htmlspecialchars($request->kepemilikan_rmh));
@@ -78,7 +78,7 @@ class PendaftaranSiswaController extends Controller
     //     $pendaftaran->tahun = date('Y');
     //     $pendaftaran->save();
 
-    //     $dataPendaftar = SiswaModel::where('jenjang', $pendaftaran->jenjang)->where('tahun', $pendaftaran->tahun)->get();
+    //     $dataPendaftar = SiswaModel::where('jurusan', $pendaftaran->jurusan)->where('tahun', $pendaftaran->tahun)->get();
     //     $kriteriaNew = KriteriaModel::all();
     //     $c1 = $c2 = $c3 = $c4 = $c5 = $c6 = $c7 = [];
     //     foreach ($dataPendaftar as $data) {
@@ -92,9 +92,9 @@ class PendaftaranSiswaController extends Controller
     //     }
 
     //     foreach ($dataPendaftar as $data) {
-    //         // Get Data Normalisasi Sesuai Jenjang dan Tahun
+    //         // Get Data Normalisasi Sesuai jurusan dan Tahun
     //         $normal = NormalisasiModel::where('siswa_id', $data->id)->whereHas('siswa', function (Builder $query) use ($data) {
-    //             $query->where('jenjang', $data->jenjang)->where('tahun', $data->tahun);
+    //             $query->where('jurusan', $data->jurusan)->where('tahun', $data->tahun);
     //         })->first();
     //         if ($normal) {
     //             $normal->c1 = min($c1) / $normal->c1;
@@ -126,27 +126,27 @@ class PendaftaranSiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'jenjang' => 'required|in:sd,smp,smaa',
+            'jurusan' => 'required|in:sd,smp,smaa',
             'tahun' => 'required',
         ]);
-        $alternatif = Alternatif::where('jenjang', $request->jenjang)->where('tahun', $request->tahun)->orderBy('id', 'desc')->first();
+        $alternatif = Alternatif::where('jurusan', $request->jurusan)->where('tahun', $request->tahun)->orderBy('id', 'desc')->first();
         if ($alternatif  != null) {
             $result = substr("$alternatif->pendaftar", -3) + 1;
             if ($result >= 100) {
-                $nama = (strtoupper($request->jenjang) . $result);
+                $nama = (strtoupper($request->jurusan) . $result);
             } else if ($result >= 10) {
-                $nama = (strtoupper($request->jenjang) . '0' . $result);
+                $nama = (strtoupper($request->jurusan) . '0' . $result);
             } else if ($result < 10) {
-                $nama = (strtoupper($request->jenjang) . '00' . $result);
+                $nama = (strtoupper($request->jurusan) . '00' . $result);
             } else {
-                $nama = (strtoupper($request->jenjang) . "001");
+                $nama = (strtoupper($request->jurusan) . "001");
             }
         } else {
-            $nama = (strtoupper($request->jenjang) . "001");
+            $nama = (strtoupper($request->jurusan) . "001");
         }
         $newAlternatif = new Alternatif();
         $newAlternatif->pendaftar = $nama;
-        $newAlternatif->jenjang = $request->jenjang;
+        $newAlternatif->jurusan = $request->jurusan;
         $newAlternatif->tahun = $request->tahun;
         $newAlternatif->save();
         return redirect()->route('pendaftaran.index');

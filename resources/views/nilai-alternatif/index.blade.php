@@ -30,11 +30,10 @@
 
             <form action="{{ route('nilai-alternatif.filter') }}" method="post" class="d-flex">
                 @csrf
-                <select name="jenjang" id="jenjang" class="form-select form-select-solid s2x mx-2" required>
-                    <option value="">Pilih jenjang ...</option>
-                    <option value="sd">Sekolah Dasar</option>
-                    <option value="smp">Sekolah Menegah Pertama</option>
-                    <option value="sma">Sekolah Menegah Atas</option>
+                <select name="jurusan" id="jurusan" class="form-select form-select-solid s2x mx-2" required>
+                    <option value="">Pilih Jurusan ...</option>
+                    <option value="ti">Teknik Informatika</option>
+                    <option value="te">Teknik Elektro</option>
                 </select>
                 <select name="tahun" id="tahun" class="form-select form-select-solid s2x mx-2" required>
                     <option value="">Pilih Tahun ...</option>

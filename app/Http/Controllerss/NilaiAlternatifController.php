@@ -26,23 +26,23 @@ class NilaiAlternatifController extends Controller
 
     public function filter(Request $request, NilaiAlternatif $normal)
     {
-        if ($request->jenjang) {
-            $reqJen = $request->input('jenjang');
+        if ($request->jurusan) {
+            $reqJen = $request->input('jurusan');
             $reqThn = $request->input('tahun');
             if ($request->tahun) {
 
                 $kriteria = Kriteria::all();
                 // $dataPendaftar = $normal->whereHas('alternatif', function (Builder  $query) use ($reqJen, $reqThn) {
-                //     return $query->where('jenjang', $reqJen)->where('tahun', $reqThn);
+                //     return $query->where('jurusan', $reqJen)->where('tahun', $reqThn);
                 // })->get();
-                $alternatif = Alternatif::where('jenjang', $reqJen)->where('tahun', $reqThn)->get();
+                $alternatif = Alternatif::where('jurusan', $reqJen)->where('tahun', $reqThn)->get();
 
                 return view('nilai-alternatif.index', compact('alternatif', 'kriteria'));
             }
 
             $kriteria = Kriteria::all();
             $alternatif = $normal->whereHas('alternatif', function (Builder  $query) use ($reqJen) {
-                return $query->where('jenjang', $reqJen);
+                return $query->where('jurusan', $reqJen);
             })->get();
             return view('nilai-alternatif.index', compact('alternatif', 'kriteria'));
         } elseif ($request->tahun) {

@@ -62,11 +62,10 @@
             @endif
             <form action="{{ route('alternatif.filter') }}" method="POST" class="d-flex">
                 @csrf
-                <select name="jenjang" id="jenjang" class="form-select form-select-solid s2x mx-2" required>
-                    <option value="">Jenjang</option>
-                    <option value="sd">Sekolah Dasar</option>
-                    <option value="smp">Sekolah Menegah Pertama</option>
-                    <option value="sma">Sekolah Menegah Atas</option>
+                <select name="jurusan" id="jurusan" class="form-select form-select-solid s2x mx-2" required>
+                    <option value="">Jurusan</option>
+                    <option value="ti">Teknik Informatika</option>
+                    <option value="te">Teknik Elektro</option>
                 </select>
                 <select name="tahun" id="tahun" class="form-select form-select-solid s2x mx-2" required>
                     <option value="">Tahun</option>
@@ -94,7 +93,7 @@
                             @if (!$alternatif == [])
                                 <tr style="border-bottom: 1.3px solid rgb(50, 50, 50) !important">
                                     <th class="fw-bolder">Kode Pendaftaran</th>
-                                    <th class="fw-bolder">Jenjang</th>
+                                    <th class="fw-bolder">Jurusan</th>
                                     <th class="fw-bolder">Tahun</th>
                                     @if (auth()->user()->role == 'admin' or auth()->user()->role == 'surveyor')
                                         <th class="fw-bolder col-1">Aksi</th>
@@ -106,7 +105,7 @@
                             @forelse ($alternatif as $p)
                                 <tr>
                                     <td>{{ strtoupper($p->kode_alternatif) }}</td>
-                                    <td>{{ strtoupper($p->jenjang) }}</td>
+                                    <td>{{ strtoupper($p->jurusan) }}</td>
                                     <td>{{ $p->tahun }}</td>
                                     @if (auth()->user()->role == 'admin' or auth()->user()->role == 'surveyor')
                                         <td class="d-flex">

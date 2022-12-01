@@ -24,16 +24,16 @@ class AlternatifController extends Controller
 
     public function filter(Request $request, Alternatif $alternatif)
     {
-        if ($request->jenjang) {
+        if ($request->jurusan) {
 
             if ($request->tahun) {
-                $alternatif = $alternatif->where('jenjang', $request->input('jenjang'))
+                $alternatif = $alternatif->where('jurusan', $request->input('jurusan'))
                     ->where('tahun', $request->input('tahun'))
                     ->get();
                 return view('alternatif.index', compact('alternatif'));
             }
 
-            $alternatif = $alternatif->where('jenjang', $request->input('jenjang'))->get();
+            $alternatif = $alternatif->where('jurusan', $request->input('jurusan'))->get();
             return view('alternatif.index', compact('alternatif'));
         } elseif ($request->tahun) {
             $alternatif = $alternatif->where('tahun', $request->input('tahun'))
@@ -64,27 +64,27 @@ class AlternatifController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'jenjang' => 'required|in:sd,smp,smaa',
+            'jurusan' => 'required|in:sd,smp,smaa',
             'tahun' => 'required',
         ]);
-        $alternatif = Alternatif::where('jenjang', $request->jenjang)->where('tahun', $request->tahun)->orderBy('id', 'desc')->first();
+        $alternatif = Alternatif::where('jurusan', $request->jurusan)->where('tahun', $request->tahun)->orderBy('id', 'desc')->first();
         if ($alternatif  != null) {
             $result = substr("$alternatif->kode_alternatif", -3) + 1;
             if ($result >= 100) {
-                $nama = (strtoupper($request->jenjang) . $result);
+                $nama = (strtoupper($request->jurusan) . $result);
             } else if ($result >= 10) {
-                $nama = (strtoupper($request->jenjang) . '0' . $result);
+                $nama = (strtoupper($request->jurusan) . '0' . $result);
             } else if ($result < 10) {
-                $nama = (strtoupper($request->jenjang) . '00' . $result);
+                $nama = (strtoupper($request->jurusan) . '00' . $result);
             } else {
-                $nama = (strtoupper($request->jenjang) . "001");
+                $nama = (strtoupper($request->jurusan) . "001");
             }
         } else {
-            $nama = (strtoupper($request->jenjang) . "001");
+            $nama = (strtoupper($request->jurusan) . "001");
         }
         $newAlternatif = new Alternatif();
         $newAlternatif->kode_alternatif = $nama;
-        $newAlternatif->jenjang = $request->jenjang;
+        $newAlternatif->jurusan = $request->jurusan;
         $newAlternatif->tahun = $request->tahun;
         $newAlternatif->save();
 

@@ -33,28 +33,28 @@ class PerhitunganController extends Controller
 
     public function filter(Request $request)
     {
-        if ($request->jenjang) {
-            $reqJen = $request->input('jenjang');
+        if ($request->jurusan) {
+            $reqJen = $request->input('jurusan');
             $reqThn = $request->input('tahun');
             if ($request->tahun) {
 
                 // $kriteria = Kriteria::whereHas('nilai', function (Builder $query) use ($reqJen, $reqThn) {
                 //       $query->whereHas('alternatif', function($query) use ($reqJen, $reqThn)  {
-                //         $query->where('jenjang', $reqJen)->where('tahun', $reqThn);
+                //         $query->where('jurusan', $reqJen)->where('tahun', $reqThn);
                 //    });
                 // })->get();
                 $kriteria = Kriteria::whereHas('nilai', function ($query) use ($reqJen, $reqThn) {
                     $query->whereHas('alternatif', function ($query) use ($reqJen, $reqThn) {
-                        $query->where('jenjang', $reqJen)->where('tahun', $reqThn);
+                        $query->where('jurusan', $reqJen)->where('tahun', $reqThn);
                     });
                 })->with(['nilai' => function ($q) use ($reqJen, $reqThn) {
                     $q->whereHas('alternatif', function ($query) use ($reqJen, $reqThn) {
-                        $query->where('jenjang', $reqJen)->where('tahun', $reqThn);
+                        $query->where('jurusan', $reqJen)->where('tahun', $reqThn);
                     });
                 }])
                     ->get();
 
-                $alternatif = Alternatif::where('jenjang', $reqJen)->where('tahun', $reqThn)->get();
+                $alternatif = Alternatif::where('jurusan', $reqJen)->where('tahun', $reqThn)->get();
                 $kode_krit = [];
                 foreach ($kriteria as $krit) {
                     $kode_krit[$krit->id] = [];
@@ -65,6 +65,7 @@ class PerhitunganController extends Controller
                     }
                     $kode_krit[$krit->id] = min($kode_krit[$krit->id]);
                 };
+                // dd($kode_krit);
                 return view('peringkat.index', [
                     'kriteria'      => $kriteria,
                     'alternatif'    => $alternatif,

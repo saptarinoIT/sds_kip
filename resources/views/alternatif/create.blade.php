@@ -35,12 +35,11 @@
             <form action="{{ route('alternatif.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label class="form-label">Jenjang</label>
-                    <select class="form-select" name="jenjang">
+                    <label class="form-label">Jurusan</label>
+                    <select class="form-select" name="jurusan">
                         <option>Pilih salah satu ...</option>
-                        <option value="sd">Sekolah Dasar</option>
-                        <option value="smp">Sekolah Menengah Pertama</option>
-                        <option value="smaa">Sekolah Menengah Atas</option>
+                        <option value="ti">Teknik Informatika</option>
+                        <option value="te">Teknik Elektro</option>
                     </select>
                 </div>
                 <div class="mb-5">

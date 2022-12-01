@@ -80,12 +80,11 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Jenjang</label>
-                        <select class="form-select" onchange="selectJenjang(this);" name="jenjang">
+                        <label class="form-label">Jurusan</label>
+                        <select class="form-select" onchange="selectJenjang(this);" name="jurusan">
                             <option>Pilih salah satu ...</option>
-                            <option value="sd">Sekolah Dasar</option>
-                            <option value="smp">Sekolah Menengah Pertama</option>
-                            <option value="sma">Sekolah Menengah Atas</option>
+                            <option value="ti">Teknik Informatika</option>
+                            <option value="te">Teknik Elektro</option>
                         </select>
                     </div>
                     <div class="d-none" id="pilihSMA">
@@ -209,13 +208,14 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        {{-- <label class="form-label">Tabungan (dalam bentuk uang) <span class="text-danger">*</span></label> --}}
+                        {{-- <label class="form-label">Tabungan (dalam bentuk uang) <span
+                            class="text-danger">*</span></label> --}}
                         {{-- <select name="c4" class="form-select">
-                            <option value="4">Rp 0</option>
-                            <option value="3">Rp 500.000 - Rp 5.000.000</option>
-                            <option value="2">Rp 5.000.001 - Rp 10.000.000</option>
-                            <option value=">1">> Rp 10.000.001</option>
-                        </select> --}}
+                        <option value="4">Rp 0</option>
+                        <option value="3">Rp 500.000 - Rp 5.000.000</option>
+                        <option value="2">Rp 5.000.001 - Rp 10.000.000</option>
+                        <option value=">1">> Rp 10.000.001</option>
+                    </select> --}}
                         <label class="form-label">Kepemilikan Harta</label>
                         <input type="number" name="c4" class="form-control @error('c4') is-invalid @enderror">
                         @error('c4')
@@ -339,8 +339,14 @@
 
 @section('customjs')
     <script>
-        function selectJenjang(value) {
-
+        function selectJenjang(setValue) {
+            if (setValue.value == "sma" || setValue.value == "snmptn" || setValue.value == "sbmptn") {
+                // alert("check");
+                document.getElementById("pilihSMA").classList.remove('d-none');
+            } else {
+                document.getElementById("pilihSMA").classList.add('d-none');
+                // document.getElementById("pilihSMA").style.display = "none";
+            }
         }
     </script>
 @endsection

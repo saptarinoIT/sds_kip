@@ -32,18 +32,18 @@ class PerhitunganController extends Controller
 
     public function filter(Request $request)
     {
-        if ($request->jenjang) {
-            $reqJen = $request->input('jenjang');
+        if ($request->jurusan) {
+            $reqJen = $request->input('jurusan');
             $reqThn = $request->input('tahun');
             if ($request->tahun) {
 
                 // $kriteria = Kriteria::all();
-                // $alternatif = Alternatif::where('jenjang', $reqJen)->where('tahun', $reqThn)->get();
+                // $alternatif = Alternatif::where('jurusan', $reqJen)->where('tahun', $reqThn)->get();
 
                 // return view('nilai-alternatif.index', compact('alternatif', 'kriteria'));
                 $kriteria = Kriteria::all();
                 // $alternatif = Alternatif::all();
-                $alternatif = Alternatif::where('jenjang', $reqJen)->where('tahun', $reqThn)->get();
+                $alternatif = Alternatif::where('jurusan', $reqJen)->where('tahun', $reqThn)->get();
                 $kode_krit = [];
                 foreach ($kriteria as $krit) {
                     $kode_krit[$krit->id] = [];

@@ -19,9 +19,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        $siswaSD = Alternatif::where('jenjang', 'sd')->get();
-        $siswaSMP = Alternatif::where('jenjang', 'smp')->get();
-        $siswaSMA = Alternatif::where('jenjang', 'sma')->get();
+        $siswaSD = Alternatif::where('jurusan', 'sd')->get();
+        $siswaSMP = Alternatif::where('jurusan', 'smp')->get();
+        $siswaSMA = Alternatif::where('jurusan', 'sma')->get();
 
         return view('home.index', compact('siswaSD', 'siswaSMP', 'siswaSMA'));
     }

@@ -19,10 +19,15 @@ class HomeController extends Controller
 
     public function index()
     {
-        $siswaSD = Alternatif::where('jenjang', 'sd')->get();
-        $siswaSMP = Alternatif::where('jenjang', 'smp')->get();
-        $siswaSMA = Alternatif::where('jenjang', 'sma')->get();
+        // $siswaSD = Alternatif::where('jurusan', 'sd')->get();
+        // $siswaSMP = Alternatif::where('jurusan', 'smp')->get();
+        // $siswaSMA = Alternatif::where('jurusan', 'sma')->get();
+        // $mahasiswa = Alternatif::where('jurusan', 'snmptn')->Orwhere('jurusan', 'sbmptn')->get();
 
-        return view('home.index', compact('siswaSD', 'siswaSMP', 'siswaSMA'));
+        // return view('home.index', compact('siswaSD', 'siswaSMP', 'siswaSMA', 'mahasiswa'));
+
+        $ti = Alternatif::where('jurusan', 'ti')->get();
+        $te = Alternatif::where('jurusan', 'te')->get();
+        return view('home.index', compact('ti', 'te'));
     }
 }

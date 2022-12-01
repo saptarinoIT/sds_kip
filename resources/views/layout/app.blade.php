@@ -290,8 +290,8 @@
                                 id="kt_header_menu_mobile_toggle">
                                 <!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
                                 <span class="svg-icon svg-icon-2x">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none">
                                         <path
                                             d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z"
                                             fill="black" />
@@ -307,8 +307,8 @@
                         <!--begin::Header Logo-->
                         <div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
                             <a href=".">
-                                <img alt="Logo" src="{{ asset('template/images/logo-light.png') }}"
-                                    class="logo-default" style="width: 100px;" />
+                                <img alt="Logo" src="{{ asset('template/images/logo-light.png') }}" class="logo-default"
+                                    style="width: 100px;" />
                                 <img alt="Logo" src="{{ asset('template/images/logo-light.png') }}"
                                     class="h-15px h-lg-20px logo-sticky" />
                             </a>
@@ -352,7 +352,9 @@
                                         <div class="cursor-pointer symbol symbol-30px symbol-md-40px"
                                             data-kt-menu-trigger="click" data-kt-menu-attach="parent"
                                             data-kt-menu-placement="bottom-end">
-                                            {{-- <img alt="Pic" src="{{\File::exists(public_path('storage/foto_user/'.Auth::user()->foto_user)) ? asset('storage/foto_user/'.Auth::user()->foto_user) : asset('storage/foto_user/default.png')}}" /> --}}
+                                            {{-- <img alt="Pic"
+                                                src="{{\File::exists(public_path('storage/foto_user/'.Auth::user()->foto_user)) ? asset('storage/foto_user/'.Auth::user()->foto_user) : asset('storage/foto_user/default.png')}}" />
+                                            --}}
                                         </div>
                                         <!--begin::Menu-->
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px"
@@ -362,17 +364,25 @@
                                                 <div class="menu-content d-flex align-items-center px-3">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-50px me-5">
-                                                        {{-- <img alt="Logo" src="{{\File::exists(public_path('storage/foto_user/'.Auth::user()->foto_user)) ? asset('storage/foto_user/'.Auth::user()->foto_user) : asset('storage/foto_user/default.png')}}" /> --}}
+                                                        {{-- <img alt="Logo"
+                                                            src="{{\File::exists(public_path('storage/foto_user/'.Auth::user()->foto_user)) ? asset('storage/foto_user/'.Auth::user()->foto_user) : asset('storage/foto_user/default.png')}}" />
+                                                        --}}
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Username-->
                                                     <div class="d-flex flex-column">
                                                         <div class="fw-bolder d-flex align-items-center fs-5">
-                                                            {{-- <span class="text-truncate w-150px">{{Auth::user()->nama}}</span> --}}
+                                                            {{-- <span
+                                                                class="text-truncate w-150px">{{Auth::user()->nama}}</span>
+                                                            --}}
                                                         </div>
-                                                        {{-- <div class="badge badge-light-success fw-bolder fs-8 px-2 py-1">{{Auth::user()->role_user}}
-                          </div> --}}
-                                                        {{-- <a href="javascript:void(0)" class="fw-bold text-muted text-hover-primary fs-7">{{Omjin::tglWaktu1(Auth::user()->last_login)}}</a> --}}
+                                                        {{-- <div
+                                                            class="badge badge-light-success fw-bolder fs-8 px-2 py-1">
+                                                            {{Auth::user()->role_user}}
+                                                        </div> --}}
+                                                        {{-- <a href="javascript:void(0)"
+                                                            class="fw-bold text-muted text-hover-primary fs-7">{{Omjin::tglWaktu1(Auth::user()->last_login)}}</a>
+                                                        --}}
                                                     </div>
                                                     <!--end::Username-->
                                                 </div>
@@ -440,9 +450,7 @@
                         class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
                         <!--begin::Copyright-->
                         <div class="text-dark order-2 order-md-1">
-                            <span class="text-muted fw-bold me-1">2022©</span>
-                            <a href="#" target="_blank" class="text-gray-800 text-hover-primary">Sistem
-                                Pendukung Keputusan Beasiswa</a>
+                            <span class="text-muted fw-bold me-1">2022© {{ config('app.name') }}</span>
                         </div>
                         <!--end::Copyright-->
                         <!--begin::Menu-->
@@ -465,10 +473,9 @@
     <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
         <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
         <span class="svg-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none">
-                <rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1"
-                    transform="rotate(90 13 6)" fill="black" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)"
+                    fill="black" />
                 <path
                     d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
                     fill="black" />

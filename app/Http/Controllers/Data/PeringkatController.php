@@ -23,17 +23,17 @@ class PeringkatController extends Controller
 
     public function filter(Request $request, NormalisasiModel $normal)
     {
-        if ($request->jenjang) {
-            $reqJen = $request->input('jenjang');
+        if ($request->jurusan) {
+            $reqJen = $request->input('jurusan');
             $reqThn = $request->input('tahun');
             if ($request->tahun) {
                 $dataPendaftar = $normal->whereHas('siswa', function (Builder  $query) use ($reqJen, $reqThn) {
-                    return $query->where('jenjang', $reqJen)->where('tahun', $reqThn);
+                    return $query->where('jurusan', $reqJen)->where('tahun', $reqThn);
                 })->orderBy('hasil', 'desc')->get();
                 return view('peringkat.index', compact('dataPendaftar'));
             }
             $dataPendaftar = $normal->whereHas('siswa', function (Builder  $query) use ($reqJen) {
-                return $query->where('jenjang', $reqJen);
+                return $query->where('jurusan', $reqJen);
             })->orderBy('hasil', 'desc')->get();
             return view('peringkat.index', compact('dataPendaftar'));
         } elseif ($request->tahun) {
@@ -47,18 +47,18 @@ class PeringkatController extends Controller
 
     public function cetak(Request $request, NormalisasiModel $normal)
     {
-        if ($request->jenjang) {
-            $reqJen = $request->input('jenjang');
+        if ($request->jurusan) {
+            $reqJen = $request->input('jurusan');
             $reqThn = $request->input('tahun');
             if ($request->tahun) {
                 $dataPendaftar = $normal->whereHas('siswa', function (Builder  $query) use ($reqJen, $reqThn) {
-                    return $query->where('jenjang', $reqJen)->where('tahun', $reqThn);
+                    return $query->where('jurusan', $reqJen)->where('tahun', $reqThn);
                 })->orderBy('hasil', 'desc')->get();
                 $pdf = PDF::loadview('peringkat.cetak', ['dataPendaftar' => $dataPendaftar]);
                 return $pdf->download('laporan-peringkat-pdf');
             }
             $dataPendaftar = $normal->whereHas('siswa', function (Builder  $query) use ($reqJen) {
-                return $query->where('jenjang', $reqJen);
+                return $query->where('jurusan', $reqJen);
             })->orderBy('hasil', 'desc')->get();
             $pdf = PDF::loadview('peringkat.cetak', ['dataPendaftar' => $dataPendaftar]);
             return $pdf->download('laporan-peringkat-pdf');

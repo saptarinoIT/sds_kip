@@ -54,32 +54,15 @@
                             <td>{{ ucwords($pendaftar->alamat) }}</td>
                         </tr>
                         <tr>
-                            <th class="fw-bolder fs-6 text-gray-800">Jenjang</th>
+                            <th class="fw-bolder fs-6 text-gray-800">Jurusan</th>
                             <th>:</th>
-                            <td>{{ ucwords($pendaftar->jenjang) }}</td>
+                            <td>{{ ucwords($pendaftar->jurusan) }}</td>
                         </tr>
                         <tr>
                             <th class="fw-bolder fs-6 text-gray-800">Asal Sekolah</th>
                             <th>:</th>
                             <td>{{ ucwords($pendaftar->asal_sekolah) }}</td>
                         </tr>
-                        @if ($pendaftar->jenjang == 'sma')
-                            <tr>
-                                <th class="fw-bolder fs-6 text-gray-800">Universitas</th>
-                                <th>:</th>
-                                <td>{{ ucwords($pendaftar->universitas) }}</td>
-                            </tr>
-                            <tr>
-                                <th class="fw-bolder fs-6 text-gray-800">Fakultas</th>
-                                <th>:</th>
-                                <td>{{ ucwords($pendaftar->fakultas) }}</td>
-                            </tr>
-                            <tr>
-                                <th class="fw-bolder fs-6 text-gray-800">Jurusan</th>
-                                <th>:</th>
-                                <td>{{ ucwords($pendaftar->jurusan) }}</td>
-                            </tr>
-                        @endif
                         <tr>
                             <th class="fw-bolder fs-6 text-gray-800">Nama Ayah</th>
                             <th>:</th>
